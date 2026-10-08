@@ -12,16 +12,22 @@ box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:en
 :root[data-theme="dark"]{--bg:#0f1b28;--card:#182838;--ink:#eaf0f4;--mute:#9aabb8;--line:#2a3d4e;--ok:#4cc2b0;--bad:#ff8a73}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 *{box-sizing:border-box}
-body{margin:0;background-color:var(--bg);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cg fill='none' stroke='%238aa0b0' stroke-opacity='.28' stroke-width='3' stroke-linejoin='round'%3E%3Cpath d='M20 40l30-12 30 12-30 12z'/%3E%3Cpath d='M34 46v14c10 8 26 8 32 0V46'/%3E%3Cpath d='M92 110h40v30H92zM112 110v30'/%3E%3Cpath d='M30 120l24-24 8 8-24 24-10 2z'/%3E%3C/g%3E%3C/svg%3E");background-attachment:fixed;color:var(--ink);font:400 16px/1.5 "Bricolage Grotesque",system-ui,sans-serif}
+
+/* PAGE BACKGROUND IMAGE (inline SVG: cap, pencil, books) */
+body{margin:0;background-color:var(--bg);background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 800' preserveAspectRatio='xMidYMid slice'%3E%3Cg opacity='.32'%3E%3Ccircle cx='1050' cy='120' r='160' fill='%23f2b632' fill-opacity='.35'/%3E%3Ccircle cx='90' cy='700' r='200' fill='%231f7a6d' fill-opacity='.3'/%3E%3Cpath d='M60 150l150-60 150 60-150 60z' fill='%23f2b632'/%3E%3Cpath d='M110 185v55c40 30 100 30 150 0v-55l-75 30z' fill='%23d99a14'/%3E%3Cpath d='M335 150v70' stroke='%23f2b632' stroke-width='5'/%3E%3Ccircle cx='335' cy='226' r='8' fill='%23f2b632'/%3E%3Crect x='880' y='700' width='260' height='40' rx='5' fill='%231f7a6d'/%3E%3Crect x='900' y='660' width='220' height='40' rx='5' fill='%23c8452f'/%3E%3Crect x='890' y='620' width='240' height='40' rx='5' fill='%238aa0b0'/%3E%3Cg transform='rotate(-30 600 420)'%3E%3Crect x='470' y='400' width='240' height='34' fill='%23f2b632'/%3E%3Cpath d='M710 400l50 17-50 17z' fill='%23f5deb3'/%3E%3Crect x='435' y='400' width='35' height='34' fill='%23c8452f'/%3E%3C/g%3E%3Cg fill='none' stroke='%238aa0b0' stroke-width='4'%3E%3Cpath d='M820 300h120v90H820zM880 300v90'/%3E%3Cpath d='M150 520l60-30 60 30-60 30z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");background-size:cover;background-position:center;background-attachment:fixed;color:var(--ink);font:400 16px/1.5 "Bricolage Grotesque",system-ui,sans-serif}
+
 .hero{text-align:center;margin-bottom:24px}
 .hero h2{display:inline-block;background:var(--card);border:1px solid var(--line);padding:16px 24px;border-radius:10px;margin:0 0 10px}
 .hero p{margin:0 auto;max-width:520px;color:var(--mute)}
-header{background:var(--ink);color:#fff;padding:28px 20px 0}
+
+/* TITLE BANNER IMAGE (inline SVG: cap, books, pencil) */
+header{color:#fff;padding:28px 20px 0;background-color:#14263a;background-image:linear-gradient(90deg,rgba(20,38,58,.96) 28%,rgba(20,38,58,.25) 75%),url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 300' preserveAspectRatio='xMaxYMid slice'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' x2='1'%3E%3Cstop offset='0' stop-color='%2314263a'/%3E%3Cstop offset='1' stop-color='%231f5f6b'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='800' height='300' fill='url(%23g)'/%3E%3Ccircle cx='700' cy='60' r='90' fill='%23f2b632' fill-opacity='.12'/%3E%3Crect x='330' y='222' width='160' height='26' rx='3' fill='%231f7a6d'/%3E%3Crect x='342' y='196' width='136' height='26' rx='3' fill='%23c8452f'/%3E%3Crect x='335' y='170' width='146' height='26' rx='3' fill='%23eaf0f4'/%3E%3Cpath d='M530 70l110-44 110 44-110 44z' fill='%23f2b632'/%3E%3Cpath d='M585 98v40c30 22 80 22 110 0V98l-55 22z' fill='%23d99a14'/%3E%3Cpath d='M750 70v62' stroke='%23f2b632' stroke-width='4'/%3E%3Ccircle cx='750' cy='136' r='6' fill='%23f2b632'/%3E%3Cg transform='rotate(-20 650 250)'%3E%3Crect x='560' y='240' width='150' height='22' fill='%23f2b632'/%3E%3Cpath d='M710 240l32 11-32 11z' fill='%23f5deb3'/%3E%3Crect x='540' y='240' width='20' height='22' fill='%23c8452f'/%3E%3C/g%3E%3C/svg%3E");background-size:cover;background-position:right center;background-repeat:no-repeat}
+
 .wrap{max-width:900px;margin:0 auto}
 h1{font-size:clamp(28px,6vw,44px);font-weight:800;margin:0 0 4px;letter-spacing:-.02em}
-header p{margin:0 0 20px;color:#b9c6d2}
+header p{margin:0 0 20px;color:#d3dde6}
 nav{display:flex;gap:4px;overflow-x:auto}
-nav button{background:none;border:0;color:#b9c6d2;font:600 15px inherit;font-family:inherit;padding:12px 16px;cursor:pointer;border-bottom:4px solid transparent;white-space:nowrap}
+nav button{background:none;border:0;color:#d3dde6;font:600 15px inherit;font-family:inherit;padding:12px 16px;cursor:pointer;border-bottom:4px solid transparent;white-space:nowrap}
 nav button[aria-selected="true"]{color:#fff;border-color:var(--acc)}
 button:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
 main{padding:24px 20px 60px}
