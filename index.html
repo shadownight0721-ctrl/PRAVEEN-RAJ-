@@ -58,28 +58,26 @@ input[type=number]{width:70px;font:inherit;padding:6px;border:1px solid var(--li
 <body>
 <header><div class="wrap">
 <h1>Student Desk</h1>
-<p>Marks, exams, attendance, timetable and fees in one place.</p>
+<p>Marks, exams, attendance and timetable in one place.</p>
 <nav role="tablist" id="nav"></nav>
 </div></header>
 <main><div class="wrap">
 <div class="hero"><h2>Welcome to My Educational Page</h2><p>Your studies at a glance, on a soft academic background of books, a graduation cap and a pencil.</p></div>
 <div id="app"></div></div></main>
 <script>
-var TABS=["Academics","Exams","Attendance","Timetable","Fees"];
+var TABS=["Academics","Exams","Attendance","Timetable"];
 var D={
 subs:[{n:"Mathematics",m:78,t:100,p:12,tp:15},{n:"Physics",m:64,t:100,p:8,tp:12},{n:"Chemistry",m:71,t:100,p:10,tp:12},{n:"English",m:84,t:100,p:5,tp:6},{n:"Computer Science",m:90,t:100,p:14,tp:15}],
 tasks:[["Maths problem set 6",0],["Physics lab record",0],["Chemistry worksheet",1],["English essay draft",0]],
 exams:[["Mathematics","2026-11-12","9:30 AM"],["Physics","2026-11-14","9:30 AM"],["Chemistry","2026-11-17","9:30 AM"],["English","2026-11-19","9:30 AM"],["Computer Science","2026-11-21","9:30 AM"]],
 att:[["Mathematics",34,40],["Physics",26,36],["Chemistry",30,35],["English",18,20],["Computer Science",33,38]],
-target:75,
-fees:[["Term 1 tuition",25000,1],["Term 2 tuition",25000,1],["Term 3 tuition",25000,0],["Exam fee",3500,0],["Library and lab",2000,1]]
+target:75
 };
 try{var s=localStorage.getItem("sd1");if(s)D=JSON.parse(s)}catch(e){}
 function save(){try{localStorage.setItem("sd1",JSON.stringify(D))}catch(e){}}
 var cur=0;
 var TT=[["Maths","Physics","Chemistry","English","CS"],["Physics","Maths","English","CS","Chemistry"],["Chemistry","CS","Maths","Physics","English"],["English","Chemistry","Physics","Maths","CS Lab"],["CS","English","Physics Lab","Chemistry","Maths"]];
 var TIMES=["9:00","10:00","11:15","12:15","2:00"];
-function inr(n){return "₹"+n.toLocaleString("en-IN")}
 function nav(){var h="";TABS.forEach(function(t,i){h+='<button role="tab" aria-selected="'+(i==cur)+'" onclick="go('+i+')">'+t+'</button>'});document.getElementById("nav").innerHTML=h}
 function go(i){cur=i;nav();render()}
 function acad(){
@@ -110,12 +108,7 @@ days.forEach(function(d){h+='<div class="h">'+d+'</div>'});
 TIMES.forEach(function(t,r){if(r==3)h+='<div class="br">Lunch break 1:15 – 2:00</div>';
 h+='<div class="h">'+t+'</div>';for(var c=0;c<5;c++)h+='<div>'+TT[c][r]+'</div>'});
 return h+'</div></div>'}
-function fees(){
-var tot=0,paid=0;D.fees.forEach(function(f){tot+=f[1];if(f[2])paid+=f[1]});
-var h='<h2>Fees</h2><div class="card"><div class="row"><div><div class="mute">Paid</div><div class="big ok">'+inr(paid)+'</div></div><div><div class="mute">Pending</div><div class="big '+(tot-paid?'no':'ok')+'">'+inr(tot-paid)+'</div></div><div><div class="mute">Total</div><div class="big">'+inr(tot)+'</div></div></div><div class="bar"><i style="width:'+Math.round(paid/tot*100)+'%"></i></div></div>';
-D.fees.forEach(function(f,i){h+='<div class="card row"><div><b>'+f[0]+'</b><div class="mute">'+inr(f[1])+'</div></div><button class="btn '+(f[2]?'':'p')+'" onclick="D.fees['+i+'][2]^=1;save();render()">'+(f[2]?'Paid · undo':'Mark as paid')+'</button></div>'});
-return h+'<p class="mute">Marking an item here only updates this tracker. Pay through your college portal.</p>'}
-function render(){document.getElementById("app").innerHTML="<section class='on'>"+[acad,exams,att,tt,fees][cur]()+"</section>"}
+function render(){document.getElementById("app").innerHTML="<section class='on'>"+[acad,exams,att,tt][cur]()+"</section>"}
 go(0);
 </script>
 </body>
